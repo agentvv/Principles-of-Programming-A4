@@ -10,6 +10,7 @@ double comp_distance(const PIXEL *A, const PIXEL *B, int image_size){
 	image_size -= rem;
 	PIXEL currA;
 	PIXEL currB;
+	//This was originally just a simple loop, but I unrolled it and used Duff's Device to make it more efficient. It saved about 5% total computation time
 	for (i = 0; i < image_size; i+=8){
 		currA = A[i];
 		currB = B[i];
